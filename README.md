@@ -68,3 +68,17 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+  useEffect(() => {
+        const intervalId = setInterval(() => {
+            if(counter === images.length - 1) {
+                setCounter(0);
+            } 
+            else {
+                setCounter(counter + 1);
+            }
+        }, 2000)
+        
+        return () => clearInterval(intervalId);
+    }, [counter])
