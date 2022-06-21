@@ -1,6 +1,6 @@
 import { Card, Container,Grid,Typography,CardMedia,CardContent, Paper,TextField,Button, Divider } from '@mui/material'
 import React, { useState,useEffect } from 'react'
-
+import {Link} from 'react-router-dom'
 const styles = {
     container:{display:"flex",backgroundColor:"#fafafa",padding:0},
     gridContainer: {padding:"0px 200px",mt:1},
@@ -9,7 +9,7 @@ const styles = {
         backgroundSize:"cover",
         backgroundColor:"transparent",
         backgroundImage:"url('assets/homePage/mobile.png')",
-        width:"100%",
+        width:"100%", 
         height:"530px"},
     // step 5
         slider:{
@@ -73,7 +73,7 @@ const Homepage = () => {
                 <Card sx={{mt:2,pb:0}}>
                     <CardContent sx={{display:"flex",flexDirection:"row",justifyContent:"center",alignItems:"center"}}>
                         <Typography>Don't have an account?</Typography>
-                        <Button variant='text' sx={{fontSize:10,color:"blue"}}>Signup</Button>
+                        <Button variant='text' sx={{fontSize:10,color:"blue"}} LinkComponent={Link} to="/signup">Signup</Button>
                     </CardContent>
                 </Card>
 
