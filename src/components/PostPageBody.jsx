@@ -61,6 +61,23 @@ const PostCardFooter = ({post}) => {
                 <Typography sx={{fontWeight:"500"}}>{post.likes} {post.likes == 1 ? "Like" : "Likes"}</Typography>
             </Box>
             }
+            <Box className="comments">
+                {
+                    (post.comments.length > 0) && (
+                    <>
+                    <Typography>View all {post.comments.length}{(post.comments.length == 1)? " comment" : " comments"} </Typography>
+                   { post.comments.map((commentValue, index) => (
+                        <Box sx={{display:"flex",gap:1}}>
+                        <Typography sx={{fontWeight:"bolder"}}>{commentValue.user} </Typography>    
+                        <Typography>{commentValue.comment} </Typography>    
+                    </Box>
+                    ))}
+                    </>
+                    )
+                }
+
+
+            </Box>
         </Box>
     )
 }

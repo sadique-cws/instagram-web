@@ -8,10 +8,7 @@ const allPost = [
         user:"wasik alam",
         comment: "kaise ho sachin bhai g ",
     },
-    {
-        user:"aditiya ",
-        comment: "kaha hai re  ",
-    },
+    
     ]
 },
 {
@@ -25,6 +22,10 @@ const allPost = [
     },
     {
         user:"anant  ",
+        comment: "aab to gaya",
+    },
+    {
+        user:"raj  ",
         comment: "aab to gaya",
     },
     ]
