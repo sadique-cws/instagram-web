@@ -1,7 +1,9 @@
 import React from 'react'
-import {Container,Grid,Box, Typography, Card, IconButton} from '@mui/material'
+import {Container,Grid,Box, Typography, Card, IconButton,Button, Stack} from '@mui/material'
 import Stories from './Stories'
 import allPost from '../data/posts'
+import user from '../data/user'
+
 import { useState } from 'react'
 
 
@@ -97,8 +99,26 @@ const PostCard = ({post}) => {
             <PostCardFooter post={post}/>
         </Card>
     )
-}
+    }
 
+const Peoples = ({data}) => {
+    return (
+        <Box sx={{display:"flex",justifyContent:"space-between",padding:"5px",alignItems:"center"}}>
+            <Box sx={{display:"flex",justifyContent:"flex-start"}}>
+                <Box>
+                    <img src={data.profilePic} style={{width:"40px",height:"40px",margin:2,borderRadius:"50%"}}/>
+                </Box>
+                <Box sx={{ml:1}}>
+                    <Typography sx={{fontSize:"16px",fontWeight:"600"}}>{data.name}</Typography>
+                    <Typography sx={{fontSize:"12px",color:"grey",marginLeft:"4px"}}>Follow you</Typography>
+                </Box>
+            </Box>
+            <Box>
+                <Button sx={{fontSize:"14px",textTransform:"capitalize"}}>Follow</Button>
+            </Box>
+        </Box>
+    )
+}
 const PostPageBody = () => {
   return (
     <Box sx={{paddingX:20,flex:1,height:"auto",backgroundColor:"#efefef"}}>
@@ -113,7 +133,20 @@ const PostPageBody = () => {
                     }
                 </Grid>
                 <Grid item lg={6}>
-                    {/* <h1>this is peoples may you know section</h1> */}
+                    <Box sx={{padding:10}}>
+                        <Box sx={{display:"flex",justifyContent:"space-between"}}>
+                            <Typography>Suggestions For You</Typography>
+                            <Typography>See All</Typography>
+                        </Box>
+                    <Stack>
+                        
+                        {
+                            user.map((value,index) => (
+                                <Peoples data={value} key={index}/>
+                            ))
+                        }
+                    </Stack>
+                    </Box>
                 </Grid>
             </Grid>
         </Container>
