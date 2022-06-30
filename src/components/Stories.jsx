@@ -7,7 +7,7 @@ import users from '../data/user';
 const Stories = () => {
   return (
    <Card elevation={0} sx={{border:"1px solid #ddd",pb:"-10px"}} >
-       <Box sx={{display:"flex",gap:"5px",overflowX:"scroll",p:"10px"}} className="scrollable">
+       <Box sx={{display:"flex",gap:"5px",overflowX:"scroll",p:"10px",width:"100%"}} className="scrollable">
        
        {
         users.map((value, index) => (

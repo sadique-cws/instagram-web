@@ -10,7 +10,7 @@ const PostPageHeader = ({handleOpen}) => {
         }
     }
     return (
-        <AppBar position="static" sx={styles.header}>
+        <AppBar position="fixed" elevation={0} sx={styles.header}>
             <Container>
                 <Toolbar>
                     <Typography sx={{flex:1}}>

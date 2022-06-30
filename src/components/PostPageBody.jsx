@@ -1,11 +1,12 @@
 import React from 'react'
 import {Container,Grid,Box, Typography, Card, IconButton,Button, Stack} from '@mui/material'
 import Stories from './Stories'
-import allPost from '../data/posts'
+// import allPost from '../data/posts'
 import user from '../data/user'
-
 import { useState } from 'react'
-
+import {db} from '../firebase'
+import {collection,query, onSnapshot, orderBy} from 'firebase/firestore' 
+import { useEffect } from 'react'
 
 const PostCardHeader = ({post}) => {
     return (
@@ -77,16 +78,17 @@ const PostCardFooter = ({post}) => {
                     </>
                     )
                 }
-
-
             </Box>
+
+
+            
         </Box>
     )
 }
 
 const PostCardBody = ({post}) => {
     return (
-        <img src={post.imgURL} style={{width:"100%"}}/>
+        <img src={post.imageURL} style={{width:"100%"}}/>
     )
 }
 
@@ -120,6 +122,15 @@ const Peoples = ({data}) => {
     )
 }
 const PostPageBody = () => {
+    const [postData,setPostData] = useState([]);
+
+    useEffect(() => {
+        const q = query(collection(db, "posts"), orderBy("user",'asc'))
+        onSnapshot(q, (querySnapshot) => {
+                setPostData(querySnapshot.docs.map((doc) => (doc.data())))
+        })
+        console.log(postData)
+    },[])
   return (
     <Box sx={{paddingX:20,flex:1,height:"auto",backgroundColor:"#efefef"}}>
         <Container sx={{pt:4}}>
@@ -127,13 +138,13 @@ const PostPageBody = () => {
                 <Grid item lg={6}>
                     <Stories/>
                     {
-                        allPost.map((value, index) => (
+                        postData.map((value, index) => (
                             <PostCard post={value} key={index}/>
                         ))
                     }
                 </Grid>
-                <Grid item lg={6}>
-                    <Box sx={{padding:10}}>
+                <Grid item lg={6} >
+                    <Box sx={{padding:"15px",position:"fixed",right:"250px",minWidth:"25%"}}>
                         <Box sx={{display:"flex",justifyContent:"space-between"}}>
                             <Typography>Suggestions For You</Typography>
                             <Typography>See All</Typography>
